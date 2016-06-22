@@ -1,5 +1,5 @@
 ---
-title: "This is the index page"
+title: "You can find some data viz here"
 ---
 
 
