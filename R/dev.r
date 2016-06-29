@@ -5,14 +5,24 @@ compile_Rmd <- function(input, output_dir, ...) {
 
 }
 
-compile_website <- function(dir_Rmd, dir_website) {
 
-	input_files <- c("index")
+compile_website <- function(input_names = NULL, dir_Rmd, dir_website) {
 
-	for(input_file in input_files){
+	if(is.null(input_names)){
 
-		input <- file.path(dir_Rmd, sprintf("%s.Rmd", input_file))
-		compile_Rmd(input, dir_website)
+		# usually this needs to be compiled in a given order (eg cleaning before analysis)
+		input_names <- c("index", "data_cleaning", "data_visualisation")
+		
+	}
+
+	input_no_toc <- c("index")
+
+	for(input_name in input_names){
+
+		input <- file.path(dir_Rmd, sprintf("%s.Rmd", input_name))
+		has_toc <- !input_name%in%input_no_toc
+
+		compile_Rmd(input, dir_website, toc = has_toc, toc_float = has_toc, code_folding = "hide", number_sections = TRUE, theme = "simplex", highlight = "tango")
 
 	}	
 
@@ -22,7 +32,7 @@ main <- function() {
 
 	library(rmarkdown)
 
-	dir_home <- "/Users/Tonton/work/projects/template"
+	dir_home <- path.expand("~/work/projects/template")
 	dir_data <- file.path(dir_home, "data")
 	dir_Rmd <- file.path(dir_home, "Rmd")
 	dir_website <- file.path(dir_home, "website")
