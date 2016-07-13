@@ -44,7 +44,7 @@ main <- function() {
 		}
 	}
 
-	compile_website(dir_Rmd, dir_website)
+	compile_website(dir_Rmd=dir_Rmd, dir_website=dir_website)
 
 }
 
