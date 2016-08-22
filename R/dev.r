@@ -22,7 +22,7 @@ compile_website <- function(input_names = NULL, dir_Rmd, dir_website) {
 		input <- file.path(dir_Rmd, sprintf("%s.Rmd", input_name))
 		has_toc <- !input_name%in%input_no_toc
 
-		compile_Rmd(input, dir_website, toc = has_toc, toc_float = has_toc, code_folding = "hide", number_sections = TRUE, theme = "simplex", highlight = "tango")
+		compile_Rmd(input = input, output_dir = dir_website, toc = has_toc, toc_float = has_toc, code_folding = "hide", number_sections = TRUE, theme = "simplex", highlight = "tango")
 
 	}	
 
@@ -44,7 +44,7 @@ main <- function() {
 		}
 	}
 
-	compile_website(dir_Rmd, dir_website)
+	compile_website(input_names = NULL, dir_Rmd = dir_Rmd, dir_website = dir_website)
 
 }
 
