@@ -1,5 +1,22 @@
+init_packrat <- function(dir_project, force = FALSE) {
+
+	library(packrat)
+
+	if(file.exists(file.path(dir_project, "packrat")) & !force){
+
+		packrat::on(project = dir_project)
+
+	} else {
+
+		packrat::init(project = dir_project, options = list(vcs.ignore.src = TRUE))
+
+	}
+}
+
 
 compile_Rmd <- function(input, output_dir, ...) {
+
+	library(rmarkdown)
 
 	render(input = input, output_dir = output_dir, output_format = html_document(self_contained = FALSE, lib_dir = file.path(output_dir, "libs"), ...))		
 
@@ -30,13 +47,11 @@ compile_website <- function(input_names = NULL, dir_Rmd, dir_website) {
 
 main <- function() {
 
-	library(rmarkdown)
-
-	dir_home <- path.expand("~/work/projects/template")
-	dir_data <- file.path(dir_home, "data")
-	dir_Rmd <- file.path(dir_home, "Rmd")
-	dir_website <- file.path(dir_home, "website")
-	dir_rds <- file.path(dir_home, "rds")
+	dir_project <- path.expand("~/work/projects/template")
+	dir_data <- file.path(dir_project, "data")
+	dir_Rmd <- file.path(dir_project, "Rmd")
+	dir_website <- file.path(dir_project, "website")
+	dir_rds <- file.path(dir_project, "rds")
 
 	for(dir in c(dir_data, dir_Rmd, dir_website, dir_rds)){
 		if(!file.exists(dir)){
@@ -44,8 +59,13 @@ main <- function() {
 		}
 	}
 
+	# initialize packrat or switch in packrat mode if already done
+	init_packrat(dir_project = dir_project)
+
 	compile_website(input_names = NULL, dir_Rmd = dir_Rmd, dir_website = dir_website)
 
+	# don't forget to switch off packrat mode at the end
+	# packrat::off(project = dir_project)
 }
 
 main()
