@@ -2,13 +2,15 @@ init_packrat <- function(dir_project, force = FALSE) {
 
 	library(packrat)
 
-	if(file.exists(file.path(dir_project, "packrat")) & !force){
+	setwd(dir = dir_project)
 
-		packrat::on(project = dir_project)
+	if(file.exists("packrat") & !force){
+
+		packrat::on()
 
 	} else {
 
-		packrat::init(project = dir_project, options = list(vcs.ignore.src = TRUE))
+		packrat::init(options = list(vcs.ignore.src = TRUE))
 
 	}
 }

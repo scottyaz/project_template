@@ -2,5 +2,13 @@
 title: "This is where all the cleaning is done"
 ---
 
+```{r echo = FALSE}
 
+knitr::read_chunk("../R/library.R", labels = "load_libraries")
+
+```
+
+```{r load_libraries, warning = FALSE, message = FALSE}
+
+```
 
