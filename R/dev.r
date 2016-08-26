@@ -47,6 +47,31 @@ compile_website <- function(input_names = NULL, dir_Rmd, dir_website) {
 
 }
 
+setup_gitignore <- function(dir_project) {
+
+	# remove usual directories from version-control
+	x <- "
+	*.history\n
+	*.sublime-project\n
+	*.sublime-workspace\n
+	data/\n
+	doc/\n
+	packrat/lib*/\n
+	packrat/src/\n
+	website/\n
+	rds/
+	"
+
+	gitignore <- file.path(dir_project, ".gitignore")
+
+	if(!file.exists(gitignore)){
+		write(x, gitignore)		
+	} else {
+		warning(".gitignore already exists")
+	}
+
+}
+
 main <- function() {
 
 	dir_project <- path.expand("~/work/projects/template")
@@ -60,6 +85,9 @@ main <- function() {
 			dir.create(dir)
 		}
 	}
+
+	# run only once, then warn
+	setup_gitignore(dir_project)
 
 	# initialize packrat or switch in packrat mode if already done
 	init_packrat(dir_project = dir_project)
