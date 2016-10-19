@@ -16,6 +16,6 @@ NB: this doesn't work, need to setup manually
 
     heroku config:set GITHUB_CLIENT_ID=XXX GITHUB_CLIENT_SECRET=XXX GITHUB_TEAM_ID=XXX
 
-NB: you need to add _config.yml to before `git push`
+NB: you need to add _config.yml before `git push`
 
     git push heroku hk-pages:master
