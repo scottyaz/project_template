@@ -10,8 +10,8 @@ navbar:
       icon: fa-area-chart
       href: data_visualisation.html
   right:
-    - text: "Cleaning"
-      icon: fa-diamond
-      href: data_cleaning.html
+    # - text: "Cleaning"
+    #   icon: fa-diamond
+    #   href: data_cleaning.html
     - icon: fa-github fa-lg
       href: https://github.com/username
