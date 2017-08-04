@@ -37,7 +37,7 @@ library(DT)
 library(plotly)
 library(sparkline)
 library(leaflet)
-library(leaflet.extra)
+library(leaflet.extras)
 
 # local functions
 source("../R/utils.r")

@@ -9,7 +9,7 @@ init_packrat <- function(dir_project, force = FALSE) {
 		packrat::on()
 
 	} else {
-
+		install_github_pkg()
 		packrat::init(options = list(vcs.ignore.src = TRUE))
 
 	}
@@ -92,6 +92,16 @@ setup_gitignore <- function(dir_project) {
 		write(x, gitignore)		
 	} else {
 		warning(".gitignore already exists")
+	}
+
+}
+
+install_github_pkg <- function() {
+
+	all_pkg <- c("bhaskarvk/leaflet.extras")
+
+	for(pkg in all_pkg){
+		install_github(pkg)
 	}
 
 }
