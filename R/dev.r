@@ -16,33 +16,55 @@ init_packrat <- function(dir_project, force = FALSE) {
 }
 
 
-compile_Rmd <- function(input, output_dir, ...) {
-
-	library(rmarkdown)
-
-	render(input = input, output_dir = output_dir, output_format = html_document(self_contained = FALSE, lib_dir = file.path(output_dir, "libs"), ...))		
-
-}
-
-
-compile_website <- function(input_names = NULL, dir_Rmd, dir_website) {
+render_html <- function(input_names = NULL, dir_Rmd, dir_website, dir_html, rm_cache = FALSE, code_folding = "none") {
 
 	if(is.null(input_names)){
 
 		# usually this needs to be compiled in a given order (eg cleaning before analysis)
-		input_names <- c("index", "data_cleaning", "data_visualisation")
+		input_names <- c("data_cleaning", "index", "data_visualisation")
 		
 	}
 
-	input_no_toc <- c("index")
+	input_no_toc <- c("index", "data_visualisation")
+
+	input_number_sections <- c("data_cleaning")
+
+	input_static <- c("data_cleaning")
 
 	for(input_name in input_names){
 
 		input <- file.path(dir_Rmd, sprintf("%s.Rmd", input_name))
 		has_toc <- !input_name%in%input_no_toc
+		number_sections <- input_name %in% input_number_sections
+		is_static <- input_name %in% input_static
 
-		compile_Rmd(input = input, output_dir = dir_website, toc = has_toc, toc_float = has_toc, code_folding = "hide", number_sections = TRUE, theme = "simplex", highlight = "tango")
+		if(is_static){
+			dir_output <- dir_html
+			file.rename("Rmd/_site.yml", "Rmd/site.yml")
 
+		} else {
+			dir_output <- dir_website
+		}
+
+
+		if(rm_cache) {
+			unlink(sprintf("Rmd/%s_cache", input_name), recursive = TRUE)
+		}
+
+		render(input = input, output_dir = dir_output, output_format = html_document(
+			self_contained = is_static, 
+			lib_dir = ifelse(is_static, NULL, file.path(dir_output, "libs")), 
+			toc = has_toc, 
+			toc_float = has_toc, 
+			code_folding = code_folding, 
+			number_sections = number_sections, 
+			theme = "yeti", 
+			highlight = "tango"
+			))
+
+		if(is_static){
+			file.rename("Rmd/site.yml", "Rmd/_site.yml")
+		}
 	}	
 
 }
@@ -59,6 +81,8 @@ setup_gitignore <- function(dir_project) {
 	packrat/lib*/\n
 	packrat/src/\n
 	website/\n
+	html/\n
+	Rmd/*_cache\n
 	rds/
 	"
 
@@ -78,6 +102,7 @@ main <- function() {
 	dir_data <- file.path(dir_project, "data")
 	dir_Rmd <- file.path(dir_project, "Rmd")
 	dir_website <- file.path(dir_project, "website")
+	dir_html <- file.path(dir_project, "html")
 	dir_rds <- file.path(dir_project, "rds")
 
 	for(dir in c(dir_data, dir_Rmd, dir_website, dir_rds)){
@@ -92,7 +117,7 @@ main <- function() {
 	# initialize packrat or switch in packrat mode if already done
 	init_packrat(dir_project = dir_project)
 
-	compile_website(input_names = NULL, dir_Rmd = dir_Rmd, dir_website = dir_website)
+	render_html(input_names = NULL, dir_Rmd = dir_Rmd, dir_website = dir_website, dir_html = dir_html)
 
 	# don't forget to switch off packrat mode at the end
 	# packrat::off(project = dir_project)
