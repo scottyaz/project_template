@@ -115,7 +115,7 @@ main <- function() {
 	dir_html <- file.path(dir_project, "html")
 	dir_rds <- file.path(dir_project, "rds")
 
-	for(dir in c(dir_data, dir_Rmd, dir_website, dir_rds)){
+	for(dir in c(dir_data, dir_Rmd, dir_website, dir_html, dir_rds)){
 		if(!file.exists(dir)){
 			dir.create(dir)
 		}
