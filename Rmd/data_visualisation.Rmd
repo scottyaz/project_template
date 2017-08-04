@@ -2,13 +2,16 @@
 title: "You can find some data viz here"
 ---
 
-```{r echo = FALSE}
+```{r setup, echo = FALSE, cache = FALSE, warning = FALSE, message = FALSE}
 
 knitr::read_chunk("../R/library.R", labels = "load_libraries")
+knitr::opts_chunk$set(cache=TRUE, tidy =TRUE, fig.align = "center", warning = FALSE, message = FALSE, echo = FALSE)
+
+source("../R/utils.r")
 
 ```
 
-```{r load_libraries, warning = FALSE, message = FALSE}
+```{r load_libraries}
 
 ```
 
