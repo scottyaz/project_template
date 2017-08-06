@@ -40,6 +40,6 @@ library(leaflet)
 library(leaflet.extras)
 
 # local functions
-source("../R/utils.r")
+source("../R/utils.R")
 
 

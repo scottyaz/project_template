@@ -40,10 +40,17 @@ render_html <- function(input_names = NULL, dir_Rmd, dir_website, dir_html, rm_c
 
 		if(is_static){
 			dir_output <- dir_html
-			file.rename("Rmd/_site.yml", "Rmd/site.yml")
+			site_file <- "Rmd/_site.yml"
+			if(file.exists(site_file)){
+				file.rename(site_file, "Rmd/site.yml")				
+			}
 
 		} else {
 			dir_output <- dir_website
+			site_file <- "Rmd/site.yml"
+			if(file.exists(site_file)){
+				file.rename(site_file, "Rmd/_site.yml")				
+			}
 		}
 
 
@@ -63,8 +70,11 @@ render_html <- function(input_names = NULL, dir_Rmd, dir_website, dir_html, rm_c
 			))
 
 		if(is_static){
-			file.rename("Rmd/site.yml", "Rmd/_site.yml")
-		}
+			site_file <- "Rmd/site.yml"
+			if(file.exists(site_file)){
+				file.rename(site_file, "Rmd/_site.yml")				
+			}
+		} 
 	}	
 
 }
@@ -78,8 +88,6 @@ setup_gitignore <- function(dir_project) {
 	*.sublime-workspace\n
 	data/\n
 	doc/\n
-	packrat/lib*/\n
-	packrat/src/\n
 	website/\n
 	html/\n
 	Rmd/*_cache\n
@@ -114,18 +122,22 @@ main <- function() {
 	dir_website <- file.path(dir_project, "website")
 	dir_html <- file.path(dir_project, "html")
 	dir_rds <- file.path(dir_project, "rds")
+	dir_website_pdf <- file.path(dir_website, "pdf")
 
-	for(dir in c(dir_data, dir_Rmd, dir_website, dir_html, dir_rds)){
+	for(dir in c(dir_data, dir_Rmd, dir_website, dir_html, dir_rds, dir_website_pdf)){
 		if(!file.exists(dir)){
 			dir.create(dir)
 		}
 	}
 
-	# run only once, then warn
-	setup_gitignore(dir_project)
+	# run only once, then warn (unless force = TRUE)
+	setup_gitignore(dir_project, force = FALSE)
 
 	# initialize packrat or switch in packrat mode if already done
 	init_packrat(dir_project = dir_project)
+
+	#load
+	source("R/library.R", chdir = TRUE)
 
 	render_html(input_names = NULL, dir_Rmd = dir_Rmd, dir_website = dir_website, dir_html = dir_html)
 
