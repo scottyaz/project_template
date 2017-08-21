@@ -91,7 +91,8 @@ setup_gitignore <- function(dir_project) {
 	website/\n
 	html/\n
 	Rmd/*_cache\n
-	rds/
+	rds/\n
+	.env
 	"
 
 	gitignore <- file.path(dir_project, ".gitignore")

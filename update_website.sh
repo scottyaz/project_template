@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# commit current changes for switching branches
+git add .
+git commit -m "auto-commit to checkout hk-pages"
+
 # switch branches to hk-pages
 git checkout hk-pages
 
