@@ -33,7 +33,7 @@ render_html <- function(input_names = NULL, dir_Rmd, dir_website, dir_html, rm_c
 
 	input_no_google_analytics <- c("data_cleaning")
 
-	has_google_analytics <- file.exits(file.path(dir_Rmd, "google_analytics.html"))
+	has_google_analytics <- file.exists(file.path(dir_Rmd, "google_analytics.html"))
 
 	for(input_name in input_names){
 
