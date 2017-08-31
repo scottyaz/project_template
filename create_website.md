@@ -48,6 +48,7 @@ Go back to the original repository.
    gem 'jekyll-auth'
    ```
 This can be done with the following command:
+
     printf "source \"https://rubygems.org\"\n\ngem 'jekyll-auth'\n" > Gemfile
 
 2. `cd` into your project's directory and run `bundle install`. If you get an error using `bundle install`, see Troubleshooting below.
