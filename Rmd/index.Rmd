@@ -1,6 +1,38 @@
 ---
-title: "This is the index page"
+title: "Cholera outbreaks in XXX"
 ---
 
+Welcome to the cholera dashboard for XXX. This tool is provided by [Epicentre/MSF](http://www.epicentre.msf.org). It will be updated on a regular basis (see _What's new?_ section).
+
+## What's new?
+
+- __YYYY-MM-DD__ Lorem Lipsum
+
+## FAQ
+
+### What is this tool?
+
+This dashboard aims at representing all information available regarding past and ongoing cholera outbreaks in XXX.
+
+### How to use this tool?
+
+Use the top bar to navigate between the different pages. You will find interactive graphics that you can explore by hoovering, zooming, etc.
+
+### How to register?
+
+This dashboard is restricted to XXX. Access to the dashboard requires authentication. You can require an access following the steps below.
+
+1. Go to the [Github registration page](https://github.com/join?source=header-home). Note this is not the cholera dashboard. 
+2. Complete the registration form by entering an username, your email address and a password.
+
+For those who have a non-personnal address (ex: desk.<span>urgence</span>@paris.msf.org) please register using:
+	- the first part of your email for the user-name (ex: _desk.urgence_)
+	- the email address (ex: desk.<span>urgence</span>@paris.msf.org)
+	- and the associated password (ex: the one you use to access the email desk.<span>urgence</span>@paris.msf.org) so that your successor will easily have access to the dashboard with the same identifiers as for the emails.
+
+When you click `create an account` just continue with the default choices for the other sections ("choose your plan", "tailor your experience").
+
+3. You will receive an email from Github asking you to confirm your account. Just confirm by clicking on the link.
+4. Once your Github registration is completed, send me your username (ex: _desk.urgence_) so I can give you access to the cholera dashboard.
 
 
