@@ -9,7 +9,7 @@ init_packrat <- function(dir_project, force = FALSE) {
 		packrat::on()
 
 	} else {
-		install_github_pkg()
+
 		packrat::init(options = list(vcs.ignore.src = TRUE))
 
 	}
