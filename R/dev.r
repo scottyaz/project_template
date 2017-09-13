@@ -16,7 +16,7 @@ init_packrat <- function(dir_project, force = FALSE) {
 }
 
 
-render_html <- function(input_names = NULL, dir_Rmd, dir_website, dir_html, rm_cache = FALSE, code_folding = "none") {
+render_html <- function(input_names = NULL, dir_Rmd, dir_website, dir_html, rm_cache = FALSE, code_folding = "hide") {
 
 	if(is.null(input_names)){
 
