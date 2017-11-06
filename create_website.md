@@ -86,6 +86,14 @@ GITHUB_TEAM_ID=XXX
 4. `git push heroku hk-pages:master`
 5. `heroku open` to open the site in your browser
 
+### Custom domain to `my-site-epicentre.msf.fr`
+
+1. Visit the [Heroku website](https://dashboard.heroku.com) and select your app called `my-site`
+2. Go in _Settings_ and scroll down to _Domains and certificates_
+3. Add `my-site-epicentre.msf.fr` as a new domain
+4. Email [Fabrice Cezard](mailto:Fabrice.CEZARD@paris.msf.org) and ask him to redirect `my-site-epicentre.msf.fr` to `my-site-epicentre.msf.fr.herokudns.com`
+5. __Note that you need to change all `https` into `http` in the Github application settings for redirection to work__
+
 
 ### Refences
  
