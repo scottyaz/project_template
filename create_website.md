@@ -64,7 +64,7 @@ git commit -a -m "Setup jekyll-auth"
 Access to the website will be restricted to members of this team.
 
 1. Create a new team for your organisation
-2. Create a new token from your personnal account (only need _read:org_ rights) and save it in the `.env` file
+2. Create a new token from your personnal account (_Settings > Developer settings > Personal access tokens_). You only need _read:org_ rights. Save it in the `.env` file
 ```
 GITHUB_TOKEN=XXX
 ```
@@ -81,7 +81,7 @@ GITHUB_TEAM_ID=XXX
 ### Setting up hosting with Heroku
 
 1. Make sure you have [the Heroku toolbelt](https://toolbelt.heroku.com/) installed
-2. Run `heroku create my-site` from your site's directory; make sure my-site matches what you specified in the GitHub application registration above.
+2. Run `heroku create my-site` from your site's directory; make sure `my-site` matches what you specified in the GitHub application registration above.
 3. `heroku config:set GITHUB_CLIENT_ID=XXX GITHUB_CLIENT_SECRET=XXX GITHUB_TEAM_ID=XXX`
 4. `git push heroku hk-pages:master`
 5. `heroku open` to open the site in your browser
