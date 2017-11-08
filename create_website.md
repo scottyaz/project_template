@@ -92,7 +92,7 @@ GITHUB_TEAM_ID=XXX
 2. Go in _Settings_ and scroll down to _Domains and certificates_
 3. Add `my-site-epicentre.msf.fr` as a new domain
 4. Email [Fabrice Cezard](mailto:Fabrice.CEZARD@paris.msf.org) and ask him to redirect `my-site-epicentre.msf.fr` to `my-site-epicentre.msf.fr.herokudns.com`
-5. __Note that you need to change all `https` into `http` in the Github application settings for redirection to work__
+5. __Note that you need to change `https://my-site.herokuapp.com` into `http://my-site-epicentre.msf.fr` in 2 URL of the Github application settings for redirection to work__
 
 
 ### Refences
