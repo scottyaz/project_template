@@ -65,14 +65,14 @@ render_html <- function(input_names = NULL, dir_Rmd, dir_website, dir_html, rm_c
 		render(input = input, output_dir = dir_output, output_format = 
 			html_document(
 				self_contained = is_static, 
-				lib_dir = switch(is_static+1, NULL, file.path(dir_output, "libs")), 
+				lib_dir = switch(is_static+1, file.path(dir_output, "libs"), NULL), 
 				toc = has_toc, 
 				toc_float = has_toc, 
 				code_folding = code_folding, 
 				number_sections = number_sections, 
 				theme = "yeti", 
 				highlight = "tango",
-				includes = switch(add_google_analytics+1, NULL, includes(in_header = file.path(dir_Rmd, "google_analytics.html")))
+				includes = switch(add_google_analytics+1, includes(in_header = file.path(dir_Rmd, "google_analytics.html")), NULL)
 				))
 
 		if(is_static){
