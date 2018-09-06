@@ -19,7 +19,7 @@ Remember the 'my-site' part for later on when using `heroku create`. Also, my-si
 
 ### Create a hk-pages branch
 
-Following [Github instructions](https://help.github.com/articles/creating-project-pages-using-the-command-line), clone a fresh copy of your repository in order to protect the non-tracked file in the original repository. In addition, we need to save the `.gitignore` file to restaure it
+First, we will do a little trick to make a new hk-branch. Following [Github instructions](https://help.github.com/articles/creating-project-pages-using-the-command-line), we will clone a fresh copy of the repo in a temporary directory (here on `~/Desktop/`), create an orphan branch and then make sure there are no files on this branch from the original repo except for the .gitignore file.
 
     cd ~/Desktop
     git clone https://github.com/username/repository.git
